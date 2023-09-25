@@ -1,2 +1,3 @@
 # ExampleBasedSamplingWithDiffusion
-Code for the paper "Example-Based Sampling with Diffusion Models"
+
+Code for the paper "Example-Based Sampling with Diffusion Models" (TBA).
