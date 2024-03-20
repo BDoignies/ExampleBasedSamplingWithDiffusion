@@ -230,7 +230,6 @@ python sample.py -c path_to_config.json -m path_to_model.ckpt -s batch dimension
 
 Where n1 x n2 x ... x nd is the number of point to sample and c1 c2 ... ck are the condtionnion values for the batch.
 
-
 ## Requirements 
 
 The required library are : 
@@ -262,4 +261,6 @@ pip install ema-pytorch
 
 ## Checkpoints and databases
 
-Trained models and database can be found [here](https://projet.liris.cnrs.fr/qmcdiffusion/).
+Trained models and database can be found [here](https://projet.liris.cnrs.fr/qmcdiffusion/). Sampling and example usage
+for trained models can be found in the `sample_example.sh` script. When run (`bash sample_example.sh`), it downloads a 
+model and sample a single pointset from it.
