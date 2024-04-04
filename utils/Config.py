@@ -5,13 +5,6 @@ import shutil
 import torchvision
 import numpy as np
 
-from utils.Trainer import Trainer
-
-from models.Denoiser import  DenoiserModel
-from models.Diffusion import  DiffusionModel
-from utils.Eval import EvalPointset
-from data.Dataset import QMCDataset
-
 DEFAULT_DEVICE = "cuda:0"
 
 def parse_indices(lst):
@@ -27,6 +20,7 @@ def parse_indices(lst):
     return indices
 
 def parse_model(model_params):
+    from models.Denoiser import  DenoiserModel
     cond = model_params.get("cond", None)
     
     if cond is None:
@@ -55,6 +49,7 @@ def parse_model(model_params):
     return DenoiserModel(**model_params, cond_features=cond.get("model_out", None), cond_emb_dim=cond.get("embd_dim", None), cond_model=model), selects, masks
 
 def parse_train(train_params, select_cond, mask_cond):
+    from data.Dataset import QMCDataset
     if "scales" not in train_params:
         train_params["scales"] = [".*"]
 
@@ -65,9 +60,11 @@ def parse_train(train_params, select_cond, mask_cond):
     return dataset, train_params
 
 def parse_eval(path, eval_params):
+    from utils.Eval import EvalPointset
     return EvalPointset(path, eval_params["freq"], eval_params["ts"])
 
 def parse_diffusion(diffu_params, model):
+    from models.Diffusion import  DiffusionModel
     betas = np.linspace(
         diffu_params["betas"]["min"],
         diffu_params["betas"]["max"],
@@ -77,6 +74,7 @@ def parse_diffusion(diffu_params, model):
     return DiffusionModel(model, betas=betas, loss=loss, device=DEFAULT_DEVICE)
 
 def ParseTrainConfig(path):
+    from utils.Trainer import Trainer
     with open(path) as config_file:
         config = json.load(config_file)
         

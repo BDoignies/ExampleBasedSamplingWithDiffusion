@@ -1,0 +1,16 @@
+name: qmcdiffusion_sample
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - pytorch=2.1.1
+  - pytorch-cuda=12.1
+  - torchvision
+  - matplotlib
+  - tqdm
+  - pip
+  - pip:
+    - ema-pytorch

@@ -232,31 +232,32 @@ Where n1 x n2 x ... x nd is the number of point to sample and c1 c2 ... ck are t
 
 ## Requirements 
 
-The required library are : 
+For sampling from the model, the required libraries are :
 
 * pytorch
-* tensorboardX
-* tqdm
-* ema-pytorch
-* POT
 * matplotlib
-* h5py
+* tqdm
 
-Here is an example install script. Note the cuda version that may not work on your system.
+A conda environment can be created and activated with the `environment_sample.yml` file : 
 
 ```bash
-conda create -n qmcdiffusion python=3.11
+conda env create -f environment_sample.yml
+conda activate qmcdiffusion_sample
+```
+
+For training, a few more libraries are required : 
+
+* tensorboardX
+* ema-pytorch
+* POT
+* scipy
+* h5py
+
+The complete train environment can be created and activated with the `environment.yml` file:
+
+```bash
+conda env create -f environment.yml
 conda activate qmcdiffusion
-
-conda install -c conda-forge matplotlib
-
-# When writting the script: Torch - 2.1.1 / numpy 1.26 / torchvision 0.16
-conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
-
-conda install -c conda-forge tensorboardx
-conda install -c conda-forge tqdm
-conda install h5py
-pip install ema-pytorch
 ```
 
 ## Checkpoints and databases
